@@ -22,18 +22,18 @@
                 <input type="number" name="hours-worked" id="hours-field" placeholder="E.g. 10" min="0" value="16" required/>
                 <label for="minutes-field">Fill out the spare minutes (leave empty if none</label>
                 <input type="number" name="extra-minutes" id="minutes-field" placeholder="E.g. 45" min="0" value="0"/>
-                <label for="jobs-field">Job's Done</label>
+                <label for="jobs-field">Orders Done</label>
                 <input type="number" name="jobs-done" id="jobs-field" min="0" value="40" required/>
                 <button type="submit">Send</button>
             </form>
         </section>
         <section class="output-fields">
-            <p class="output-indicator">Orders needed for max bonus: </p>
-            <span id="orders-needed-high">default</span>
-            <p class="output-indicator">Orders needed for mid bonus:</p>
-            <span id="orders-needed-mid">default</span>
-            <p class="output-indicator">Orders needed for min bonus:</p>
-            <span id="orders-needed-min">default</span>
+            <p class="output-indicator">Orders needed for max bonus(€1.50 per order): </p>
+            <p class="order-result" id="orders-needed-high">default</p>
+            <p class="output-indicator">Orders needed for mid bonus(€0.50 per order):</p>
+            <p class="order-result" id="orders-needed-mid">default</p>
+            <p class="output-indicator">Orders needed for min bonus(€0.25 per order):</p>
+            <p class="order-result" id="orders-needed-min">default</p>
         </section>
     </div>
 </main>

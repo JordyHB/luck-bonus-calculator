@@ -12,9 +12,9 @@ function returnInput() {
     console.log(midBonusField)
     const maxBonusField = document.getElementById('orders-needed-high')
     console.log(maxBonusField)
-    minBonusField.innerHTML = (Math.floor(hoursWorked * 2.50)).toString()
-    midBonusField.innerHTML = (Math.floor(hoursWorked * 2.7)).toString()
-    maxBonusField.innerHTML = (Math.floor(hoursWorked * 2.90)).toString()
+    minBonusField.innerHTML = (Math.ceil(hoursWorked * 2.4951)).toString()
+    midBonusField.innerHTML = (Math.ceil(hoursWorked * 2.6951)).toString()
+    maxBonusField.innerHTML = (Math.ceil(hoursWorked * 2.8951)).toString()
 
     event.preventDefault();
 }
