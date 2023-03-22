@@ -1,0 +1,76 @@
+/*////////////////////////
+    Table of Contents
+    1. Global Styles
+    2. Typography
+    3. Layout
+        3.1 Reusables
+        3.2 Other
+    4. Areas
+        4.1 Header
+        4.2 Introduction
+        etc.
+    5. Media Queries
+////////////////////////*/
+
+/* ------------------------------- 1. Global Styles -------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ------------------------------- 2. Typography ----------------------------------- */
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+.title-div {
+    color: white;
+}
+
+h1 {
+    font-size: 46px;
+}
+
+.under-title {
+    font-style: italic;
+}
+/* ------------------------------- 3. Layout --------------------------------------- */
+
+/* --------------- 3.1 Reusables ----------------------- */
+
+/* --------------- 3.2 Other --------------------------- */
+
+/* ------------------------------- 4. Areas ---------------------------------------- */
+
+/* --------------- 4.1 Header ------------------------- */
+
+header {
+    display: flex;
+    min-width: 100vw;
+    min-height: 16rem;
+    background: rgb(251,132,63);
+    background: radial-gradient(circle, rgba(251,132,63,1) 0%, rgba(252,170,70,1) 100%);
+    justify-content: center;
+    padding: 2rem;
+}
+
+.title-div {
+    text-align: center;
+}
+
+.under-title {
+    margin: 0.5rem;
+}
+/* --------------- 4.1 main ------------------------- */
+
+/* --------------- 4.2 input-field ------------------- */
+/* --------------- 4.2 output-field ------------------- */
+
+/* ------------------------------- 5. Media Queries -------------------------------- */
+

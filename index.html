@@ -2,9 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Luck Bonus Calculator</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+
 </head>
 <body>
+<header>
+    <div class="title-div">
+        <h1>Jord's luck bonus calculator</h1>
+        <p class="under-title">For when you wanna know how much money that burgerjoint cost you!</p>
+    </div>
+</header>
+<main>
+    <section class="input-fields">
+        <form onsubmit="returnInput()">
+            <label for="hours-field">Please fill out a the full hours you worked</label>
+            <input type="number" name="hours-worked" id="hours-field" placeholder="E.g. 10" required/>
+            <label for="minutes-field">Fill out the spare minutes (leave empty if only round hours)</label>
+            <input type="number" name="extra-minutes" id="minutes-field" placeholder="E.g. 45"/>
+            <label for="jobs-field">Job's Done</label>
+            <input type="number" name="jobs-done" id="jobs-field" required/>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    <section class="output-fields">
 
+    </section>
+</main>
+<footer>
+    <p class="signature">Jordy Hoogeboom, 2023</p>
+</footer>
+<script src="calculator.js"></script>
 </body>
 </html>
