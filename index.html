@@ -15,20 +15,27 @@
     </div>
 </header>
 <main>
-    <section class="input-fields">
-        <form onsubmit="returnInput()">
-            <label for="hours-field">Please fill out a the full hours you worked</label>
-            <input type="number" name="hours-worked" id="hours-field" placeholder="E.g. 10" required/>
-            <label for="minutes-field">Fill out the spare minutes (leave empty if only round hours)</label>
-            <input type="number" name="extra-minutes" id="minutes-field" placeholder="E.g. 45"/>
-            <label for="jobs-field">Job's Done</label>
-            <input type="number" name="jobs-done" id="jobs-field" required/>
-            <button type="submit">Send</button>
-        </form>
-    </section>
-    <section class="output-fields">
-
-    </section>
+    <div class="outer-container">
+        <section class="input-fields">
+            <form onsubmit="returnInput()">
+                <label for="hours-field">Please fill out a the full hours you worked</label>
+                <input type="number" name="hours-worked" id="hours-field" placeholder="E.g. 10" min="0" value="16" required/>
+                <label for="minutes-field">Fill out the spare minutes (leave empty if none</label>
+                <input type="number" name="extra-minutes" id="minutes-field" placeholder="E.g. 45" min="0" value="0"/>
+                <label for="jobs-field">Job's Done</label>
+                <input type="number" name="jobs-done" id="jobs-field" min="0" value="40" required/>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+        <section class="output-fields">
+            <p class="output-indicator">Orders needed for max bonus: </p>
+            <span id="orders-needed-high">default</span>
+            <p class="output-indicator">Orders needed for mid bonus:</p>
+            <span id="orders-needed-mid">default</span>
+            <p class="output-indicator">Orders needed for min bonus:</p>
+            <span id="orders-needed-min">default</span>
+        </section>
+    </div>
 </main>
 <footer>
     <p class="signature">Jordy Hoogeboom, 2023</p>

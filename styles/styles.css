@@ -69,7 +69,21 @@ header {
 }
 /* --------------- 4.1 main ------------------------- */
 
+.outer-container {
+    display: flex;
+    flex-direction: row;
+}
+
 /* --------------- 4.2 input-field ------------------- */
+
+input {
+    display: block;
+}
+.input-fields {
+    display: flex;
+    flex-direction: column;
+
+}
 /* --------------- 4.2 output-field ------------------- */
 
 /* ------------------------------- 5. Media Queries -------------------------------- */
