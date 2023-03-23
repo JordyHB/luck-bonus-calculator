@@ -16,24 +16,34 @@
 </header>
 <main>
     <div class="outer-container">
-        <section class="input-fields">
+        <section class="input-fields info-tiles">
             <form onsubmit="returnInput()">
-                <label for="hours-field">Please fill out a the full hours you worked</label>
-                <input type="number" name="hours-worked" id="hours-field" placeholder="E.g. 10" min="0" value="16" required/>
-                <label for="minutes-field">Fill out the spare minutes (leave empty if none</label>
-                <input type="number" name="extra-minutes" id="minutes-field" placeholder="E.g. 45" min="0" value="0"/>
-                <label for="jobs-field">Orders Done</label>
-                <input type="number" name="jobs-done" id="jobs-field" min="0" value="40" required/>
+                <label for="hours-field">Fill out your work hours.</label>
+                <input type="number" name="hours-worked" id="hours-field" placeholder="E.g. 10" min="0" value="0" onfocus="this.value= ''" required/>
+                <label for="minutes-field">Fill out the spare minutes.</label>
+                <input type="number" name="extra-minutes" id="minutes-field" placeholder="E.g. 45" min="0" value="0" onfocus="this.value= ''" required/>
+                <label for="jobs-field">Orders done.</label>
+                <input type="number" name="jobs-done" id="jobs-field" placeholder="E.g. 30" min="0" value="0" onfocus="this.value= ''" required/>
                 <button type="submit">Send</button>
             </form>
         </section>
-        <section class="output-fields">
-            <p class="output-indicator">Orders needed for max bonus(€1.50 per order): </p>
-            <p class="order-result" id="orders-needed-high">default</p>
-            <p class="output-indicator">Orders needed for mid bonus(€0.50 per order):</p>
-            <p class="order-result" id="orders-needed-mid">default</p>
-            <p class="output-indicator">Orders needed for min bonus(€0.25 per order):</p>
-            <p class="order-result" id="orders-needed-min">default</p>
+        <section class="output-general info-tiles">
+            <p class="output-indicator">Orders needed (€1.50 per order): </p>
+            <p class="order-result" id="orders-needed-high">max bonus</p>
+            <p class="output-indicator">Orders needed (€0.50 per order):</p>
+            <p class="order-result" id="orders-needed-mid">mid bonus</p>
+            <p class="output-indicator">Orders needed (€0.25 per order):</p>
+            <p class="order-result" id="orders-needed-min">min bonus</p>
+        </section>
+        <section class="output-personal info-tiles">
+            <p class="current-oph">Your current score:</p>
+            <p class="order-result" id="personal-score">0</p>
+            <p class="current-oph">Your score towards max bonus:</p>
+            <p class="order-result" id="till-max" >0</p>
+            <p class="current-oph">Your score towards mid bonus:</p>
+            <p class="order-result" id="till-mid" >0</p>
+            <p class="current-oph">Your score towards min bonus:</p>
+            <p class="order-result" id="till-min">0</p>
         </section>
     </div>
 </main>
