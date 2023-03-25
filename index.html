@@ -16,16 +16,20 @@
 </header>
 <main>
     <div class="outer-container">
+        <section class="output-luck info-tiles">
+            <p class="current-oph">Your current score:</p>
+            <p class="order-result" id="personal-score">0</p>
+        </section>
         <section class="input-fields info-tiles">
-            <form onsubmit="returnInput()">
+<!--            <form onsubmit="returnInput()">-->
                 <label for="hours-field">Fill out your work hours.</label>
-                <input type="number" name="hours-worked" id="hours-field" placeholder="E.g. 10" min="1" max="1000" value="1" onfocus="this.value= ''" required/>
+                <input type="number" name="hours-worked" id="hours-field" placeholder="E.g. 10" min="1" pattern="[1-9]{3}" value="1" onfocus="this.value= ''" required/>
                 <label for="minutes-field">Fill out the spare minutes.</label>
                 <input type="number" name="extra-minutes" id="minutes-field" placeholder="E.g. 45" min="0" max="59" value="0" onfocus="this.value= ''" required/>
                 <label for="jobs-field">Orders done.</label>
                 <input type="number" name="jobs-done" id="jobs-field" placeholder="E.g. 30" min="1" max="3000" value="1" onfocus="this.value= ''" required/>
                 <button type="submit">Send</button>
-            </form>
+<!--            </form>-->
         </section>
         <section class="output-general info-tiles">
             <p class="output-indicator">Orders needed (€1.50 per order): </p>
@@ -36,8 +40,6 @@
             <p class="order-result" id="orders-needed-min">min bonus</p>
         </section>
         <section class="output-personal info-tiles">
-            <p class="current-oph">Your current score:</p>
-            <p class="order-result" id="personal-score">0</p>
             <p class="current-oph">Your score towards max bonus:</p>
             <p class="order-result" id="till-max" >0</p>
             <p class="current-oph">Your score towards mid bonus:</p>

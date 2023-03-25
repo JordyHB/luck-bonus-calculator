@@ -25,6 +25,7 @@
 body {
     background-color: beige;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 /* ------------------------------- 2. Typography ----------------------------------- */
@@ -56,20 +57,22 @@ input {
 .outer-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: 1rem;
-    gap: 1.5rem;
+    gap: 2rem;
     flex-wrap: wrap;
 }
 
 /*styling for the tiles with in and output*/
 .info-tiles {
     display: flex;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem;
+    justify-content: center;
     background-color: darkorange;
+    text-align: center;
     color: white;
     border-radius: 0.5rem;
-    flex: 0 1 20rem;
+    flex: 0 1 24rem;
     min-width: 10rem;
     flex-direction: column;
 }
@@ -88,6 +91,7 @@ header {
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    margin-bottom: 6rem;
 }
 
 .title-div {
@@ -124,10 +128,15 @@ input {
 
 /* --------------- 4.3 footer ------------------------- */
 
+footer {
+    margin-top: auto;
+}
 
 /* ------------------------------- 5. Media Queries -------------------------------- */
 
 @media screen and (min-width: 800px) {
-
+    .outer-container {
+        gap: 4rem;
+    }
 }
 

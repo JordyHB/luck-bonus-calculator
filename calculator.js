@@ -1,10 +1,10 @@
 function returnInput() {
     // gets the amount of work hours input on the form
-    const hoursWorked = document.getElementById('hours-field').value;
+    const hoursWorked = document.getElementById('hours-field');
     // get the amount of work minutes from the input form
-    const minWorked = document.getElementById('minutes-field').value;
+    const minWorked = document.getElementById('minutes-field');
     // gets the amount of jobs done input on the form
-    const jobsDone = document.getElementById('jobs-field').value;
+    const jobsDone = document.getElementById('jobs-field');
 
     // preps the general output field variables
     const minBonusField = document.getElementById('orders-needed-min')
@@ -12,11 +12,11 @@ function returnInput() {
     const maxBonusField = document.getElementById('orders-needed-high')
     // multiplies the input of the hours + the decimals of the minutes field by necessary number to get the different bonuses
     minBonusField.innerHTML =
-        (Math.ceil((Number(hoursWorked) + Number(minWorked) / 60) * 2.4951)).toString()
+        (Math.ceil((Number(hoursWorked.value) + Number(minWorked.value) / 60) * 2.4951)).toString()
     midBonusField.innerHTML =
-        (Math.ceil((Number(hoursWorked) + Number(minWorked) / 60) * 2.6951)).toString()
+        (Math.ceil((Number(hoursWorked.value) + Number(minWorked.value) / 60) * 2.6951)).toString()
     maxBonusField.innerHTML =
-        (Math.ceil((Number(hoursWorked) + Number(minWorked) / 60) * 2.8951)).toString()
+        (Math.ceil((Number(hoursWorked.value) + Number(minWorked.value) / 60) * 2.8951)).toString()
 
     // preps the personal output field variables
     const personalScore = document.getElementById('personal-score')
@@ -28,7 +28,7 @@ function returnInput() {
 
     // returns the personal score by dividing orders done by hours + minutes worked
     personalScore.innerHTML =
-        (Number(jobsDone) / (Number(hoursWorked) + Number(minWorked) / 60)).toFixed(2).toString()
+        (Number(jobsDone.innerHTML) / (Number(hoursWorked.innerHTML) + Number(minWorked.innerHTML) / 60)).toFixed(2).toString()
     if (personalScore.innerHTML >= 2.896) {
         // adds the money you are currently getting from the bonus
         personalScore.innerHTML =
@@ -53,7 +53,7 @@ function returnInput() {
     }
 
     // sets order balance for the max field
-    orderBalance = Number(maxBonusField.innerHTML - Number(jobsDone))
+    orderBalance = Number(maxBonusField.innerHTML - Number(jobsDone.innerHTML))
     // checks to see if orderBalance is a negative number for output
     if (orderBalance < 0) {
         // converts order balance from a negative to a positive number
@@ -73,7 +73,7 @@ function returnInput() {
     }
 
     // sets order balance for the mid field
-    orderBalance = Number(midBonusField.innerHTML - Number(jobsDone))
+    orderBalance = Number(midBonusField.innerHTML - Number(jobsDone.innerHTML))
     // checks to see if orderBalance is a negative number for output
     if (orderBalance < 0) {
         // converts order balance from a negative to a positive number
@@ -93,7 +93,7 @@ function returnInput() {
     }
 
     // sets order balance for the min field
-    orderBalance = Number(minBonusField.innerHTML - Number(jobsDone))
+    orderBalance = Number(minBonusField.innerHTML - Number(jobsDone.innerHTML))
     console.log(orderBalance)
     // checks to see if orderBalance is a negative number for output
     if (orderBalance < 0) {
@@ -123,11 +123,17 @@ function returnInput() {
     minBonusField.innerHTML =
         `${minBonusField.innerHTML} (€${Number(minBonusField.innerHTML) * 0.25.toFixed(2)})`
 
-
-
     // prevents the page refreshing on form submit
     event.preventDefault();
 }
 
-console.log('hello')
+const inputFields = document.querySelectorAll('input')
+for (let i = 0; i < inputFields.length ; i++) {
+    console.log(i)
+    inputFields[i].addEventListener('input', returnInput)
+}
+
+
+
+
 
