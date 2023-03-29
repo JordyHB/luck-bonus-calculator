@@ -28,23 +28,23 @@ function returnInput() {
 
     // returns the personal score by dividing orders done by hours + minutes worked
     personalScore.innerHTML =
-        (Number(jobsDone.innerHTML) / (Number(hoursWorked.innerHTML) + Number(minWorked.innerHTML) / 60)).toFixed(2).toString()
+        (Number(jobsDone.value) / (Number(hoursWorked.value) + Number(minWorked.value) / 60)).toFixed(2).toString()
     if (personalScore.innerHTML >= 2.896) {
         // adds the money you are currently getting from the bonus
         personalScore.innerHTML =
-            `${personalScore.innerHTML} (€${jobsDone * 1.50.toFixed(2)})`
+            `${personalScore.innerHTML} (€${jobsDone.value * 1.50.toFixed(2)})`
     }
     // sets level for showing how much you get currently with mid bonus
      else if (personalScore.innerHTML >= 2.696) {
         // adds the money you are currently getting from the bonus
         personalScore.innerHTML =
-            `${personalScore.innerHTML} (€${jobsDone * 0.50.toFixed(2)})`
+            `${personalScore.innerHTML} (€${jobsDone.value * 0.50.toFixed(2)})`
     }
     // sets level for showing how much you get currently with min bonus
      else if (personalScore.innerHTML >= 2.496) {
         // adds the money you are currently getting from the bonus
         personalScore.innerHTML =
-            `${personalScore.innerHTML} (€${jobsDone * 0.25.toFixed(2)})`
+            `${personalScore.innerHTML} (€${jobsDone.value * 0.25.toFixed(2)})`
     }
     // if not above last thresshold prints no bonus
      else {
@@ -53,7 +53,7 @@ function returnInput() {
     }
 
     // sets order balance for the max field
-    orderBalance = Number(maxBonusField.innerHTML - Number(jobsDone.innerHTML))
+    orderBalance = Number(maxBonusField.innerHTML - jobsDone.value)
     // checks to see if orderBalance is a negative number for output
     if (orderBalance < 0) {
         // converts order balance from a negative to a positive number
@@ -73,18 +73,18 @@ function returnInput() {
     }
 
     // sets order balance for the mid field
-    orderBalance = Number(midBonusField.innerHTML - Number(jobsDone.innerHTML))
+    orderBalance = Number(midBonusField.innerHTML - Number(jobsDone.value))
     // checks to see if orderBalance is a negative number for output
     if (orderBalance < 0) {
         // converts order balance from a negative to a positive number
         orderBalance *= -1
         // sets the output field
-        tillMidScore.innerHTML = orderBalance + ' order(s) ahead  :)'
+        tillMidScore.innerHTML = orderBalance + ' order(s) ahead'
     }
     // if positive number means user is behind on orders
     else if (orderBalance > 0) {
         // sets the output field
-        tillMidScore.innerHTML = orderBalance + ' order(s) behind  :('
+        tillMidScore.innerHTML = orderBalance + ' order(s) behind'
     }
     // else statement for if the user is on pace
     else {
@@ -93,19 +93,19 @@ function returnInput() {
     }
 
     // sets order balance for the min field
-    orderBalance = Number(minBonusField.innerHTML - Number(jobsDone.innerHTML))
+    orderBalance = Number(minBonusField.innerHTML - Number(jobsDone.value))
     console.log(orderBalance)
     // checks to see if orderBalance is a negative number for output
     if (orderBalance < 0) {
         // converts order balance from a negative to a positive number
         orderBalance *= -1
         // sets the output field
-        tillMinScore.innerHTML = orderBalance + ' order(s) ahead  :)'
+        tillMinScore.innerHTML = orderBalance + ' order(s) ahead'
     }
     // if positive number means user is behind on orders
     else if (orderBalance > 0) {
         // sets the output field
-        tillMinScore.innerHTML = orderBalance + ' order(s) behind  :('
+        tillMinScore.innerHTML = orderBalance + ' order(s) behind'
     }
     // else statement for if the user is on pace
     else {
@@ -122,15 +122,47 @@ function returnInput() {
     // adds the monetary value of getting the bonus to the output.
     minBonusField.innerHTML =
         `${minBonusField.innerHTML} (€${Number(minBonusField.innerHTML) * 0.25.toFixed(2)})`
-
-    // prevents the page refreshing on form submit
-    event.preventDefault();
 }
 
+// Fetches all input fields on the page
 const inputFields = document.querySelectorAll('input')
+// loops through all the input fields in the page giving them an event listener
 for (let i = 0; i < inputFields.length ; i++) {
-    console.log(i)
-    inputFields[i].addEventListener('input', returnInput)
+    inputFields[i].addEventListener('input', (e) => {
+        console.log(e)
+        console.log(e.inputType)
+        // validates wether it's a number lower than 10.000
+       if (/^\d+$/g.test(e.data) && inputFields[i].value.length <= 4) {
+          // checks if the input is in the minute field to set a max of 59
+           if (e.target.id === 'minutes-field') {
+               // allows the entry if less than 60
+               if (e.target.value < 60) {
+                   returnInput()
+               }
+               // blocks the input
+               else {
+                   e.target.value = e.target.value.slice(0, -1)
+               }
+           }
+           // allows up to a 10.000 on all other fields
+           else {
+               // updates the page
+               returnInput()
+           }
+       }
+       // limits the size of the number
+       else if (inputFields[i].value.length > 4) {
+           // removes input if longer than 4
+           e.target.value = e.target.value.slice(0, -1)
+       }
+        // also updates on a backspace
+       else if (e.inputType === 'deleteContentBackward') {
+           returnInput()
+       }
+        // prevents invalid inputs by replacing them
+       else {
+           e.target.value = e.target.value.replace(/\D+/g, '')
+       }})
 }
 
 
