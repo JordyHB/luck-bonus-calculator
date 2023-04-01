@@ -23,9 +23,24 @@
 }
 
 body {
+    display: flex;
     background-color: beige;
     overflow-x: hidden;
     min-height: 100vh;
+    flex-direction: column;
+}
+
+/*removes the arrows from the number fields*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }
 
 /* ------------------------------- 2. Typography ----------------------------------- */
@@ -47,9 +62,7 @@ h1 {
     font-style: italic;
 }
 
-input {
-    font-size: 1rem;
-}
+
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 /* --------------- 3.1 Reusables ----------------------- */
@@ -111,8 +124,11 @@ input {
     display: block;
     width: 100%;
     border-radius: 0.5rem;
-    padding: 0.4rem;
-    border: 0
+    padding: 0.25rem 0.5rem;
+    /*fixes a weird size bug*/
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    border: 0;
 }
 
 
@@ -129,7 +145,15 @@ input {
 /* --------------- 4.3 footer ------------------------- */
 
 footer {
+    display: flex;
+    flex-direction: column;
     margin-top: auto;
+    padding: 0.5rem;
+    flex-basis: 3rem;
+    color: white;
+    background-color: black;
+    min-width: 100%;
+    text-align: center;
 }
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

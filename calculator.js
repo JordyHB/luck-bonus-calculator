@@ -6,6 +6,11 @@ function returnInput() {
     // gets the amount of jobs done input on the form
     const jobsDone = document.getElementById('jobs-field');
 
+    // makes sure hours worked isnt 0 or empty to prevent dividing by 0
+    if (Number(hoursWorked.value) === 0 || hoursWorked.value === '') {
+        hoursWorked.value = 1
+    }
+
     // preps the general output field variables
     const minBonusField = document.getElementById('orders-needed-min')
     const midBonusField = document.getElementById('orders-needed-mid')
@@ -94,7 +99,6 @@ function returnInput() {
 
     // sets order balance for the min field
     orderBalance = Number(minBonusField.innerHTML - Number(jobsDone.value))
-    console.log(orderBalance)
     // checks to see if orderBalance is a negative number for output
     if (orderBalance < 0) {
         // converts order balance from a negative to a positive number
@@ -129,12 +133,10 @@ const inputFields = document.querySelectorAll('input')
 // loops through all the input fields in the page giving them an event listener
 for (let i = 0; i < inputFields.length ; i++) {
     inputFields[i].addEventListener('input', (e) => {
-        console.log(e)
-        console.log(e.inputType)
         // validates wether it's a number lower than 10.000
        if (/^\d+$/g.test(e.data) && inputFields[i].value.length <= 4) {
           // checks if the input is in the minute field to set a max of 59
-           if (e.target.id === 'minutes-field') {
+           if (e.target.id === 'minutes-field')  {
                // allows the entry if less than 60
                if (e.target.value < 60) {
                    returnInput()
@@ -144,6 +146,7 @@ for (let i = 0; i < inputFields.length ; i++) {
                    e.target.value = e.target.value.slice(0, -1)
                }
            }
+
            // allows up to a 10.000 on all other fields
            else {
                // updates the page
